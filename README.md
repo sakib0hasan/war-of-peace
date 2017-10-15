@@ -4,5 +4,5 @@ Command to run:
 `go run *.go`
 
 ## Results
-![Result](https://i.imgur.com/wTgDKhM.png)
+![Result](https://i.imgur.com/tWkgVmp.png)
 
