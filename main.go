@@ -4,9 +4,9 @@ import (
 	"os"
 	"bufio"
 	"fmt"
-	"strings"
 	"sync/atomic"
 	"time"
+	"bytes"
 )
 
 type ExampleTask []byte
@@ -14,11 +14,9 @@ type ExampleTask []byte
 var readOps int32 = 0
 
 func (e ExampleTask) Execute() {
-	line := string(e)
-	line = strings.TrimSpace(line)
-	spaces := strings.Count(line, " ")
-	line_breaks := strings.Count(line, "\n")
-	atomic.AddInt32(&readOps, int32(spaces)+1+int32(line_breaks))
+	key_slice := []byte(" ")
+	key_slice3 := []byte("\n")
+	atomic.AddInt32(&readOps, int32(bytes.Count(e,key_slice)+bytes.Count(e,key_slice3))+1)
 }
 
 func main() {
